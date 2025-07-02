@@ -152,81 +152,89 @@ console.log("Filtered months (next six months):", sortedMonths);
 
 
 
-    function createRevenueChart(revenueByDivision, months) {
-        const divisions = Object.keys(revenueByDivision);
-        const datasets = [];
+ function createRevenueChart(revenueByDivision, months) {
+    // 👉 Get division names and sort them alphabetically
+    const divisions = Object.keys(revenueByDivision).sort((a, b) => {
+        return a.localeCompare(b);
+    });
 
-        const colors = [
-            'rgba(75, 192, 192, 0.7)',
-            'rgba(255, 99, 132, 0.7)',
-            'rgba(54, 162, 235, 0.7)',
-            'rgba(255, 206, 86, 0.7)',
-            'rgba(153, 102, 255, 0.7)',
-            'rgba(255, 159, 64, 0.7)'
-        ];
+    const datasets = [];
 
-        divisions.forEach((division, index) => {
-            const data = months.map(month => revenueByDivision[division][month] || 0);
+    const colors = [
+        'rgba(75, 192, 192, 0.7)',
+        'rgba(255, 99, 132, 0.7)',
+        'rgba(54, 162, 235, 0.7)',
+        'rgba(255, 206, 86, 0.7)',
+        'rgba(153, 102, 255, 0.7)',
+        'rgba(255, 159, 64, 0.7)'
+    ];
 
-            datasets.push({
-                label: division,
-                data: data,
-                backgroundColor: colors[index % colors.length],
-                borderWidth: 1
-            });
+    divisions.forEach((division, index) => {
+        const data = months.map(month => revenueByDivision[division][month] || 0);
+
+        datasets.push({
+            label: division,
+            data: data,
+            backgroundColor: colors[index % colors.length],
+            borderWidth: 1
         });
+    });
 
-        const ctx = document.getElementById('expectedRevenueChart').getContext('2d');
+    const ctx = document.getElementById('expectedRevenueChart').getContext('2d');
 
-        if (expectedRevenueChartInstance !== null) {
-            expectedRevenueChartInstance.destroy();
-        }
+    if (expectedRevenueChartInstance !== null) {
+        expectedRevenueChartInstance.destroy();
+    }
 
-        expectedRevenueChartInstance = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: months,
-                datasets: datasets
+    expectedRevenueChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: months,
+            datasets: datasets
+        },
+        options: {
+            responsive: true,
+            interaction: {
+                mode: 'index',
+                intersect: false
             },
-            options: {
-                responsive: true,
-                interaction: {
-                    mode: 'index',
-                    intersect: false
-                },
-                stacked: true,
-                scales: {
-                    x: {
-                        title: {
-                            display: true,
-                            text: ''
-                        }
-                    },
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: ''
-                        },
-                        ticks: {
-                            callback: function (value) {
-                                return `$${value.toLocaleString()}`;
-                            }
-                        }
+            stacked: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Month'
                     }
                 },
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function (tooltipItem) {
-                                return `${tooltipItem.dataset.label}: $${tooltipItem.raw.toLocaleString()}`;
-                            }
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Expected Revenue'
+                    },
+                    ticks: {
+                        callback: function (value) {
+                            return `$${value.toLocaleString()}`;
                         }
                     }
                 }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function (tooltipItem) {
+                            return `${tooltipItem.dataset.label}: $${tooltipItem.raw.toLocaleString()}`;
+                        }
+                    }
+                },
+                legend: {
+                    // Chart.js legend uses dataset order, so sorting datasets does the trick!
+                }
             }
-        });
-    }
+        }
+    });
+}
+
 
     const allRecords = await fetchAllData();
     await processRecords(allRecords);
