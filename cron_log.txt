@@ -1,0 +1,45 @@
+📂 Using downloads path: /Users/richardmcgirt/Downloads
+📁 Target repository path: /Users/richardmcgirt/Desktop/Briqdata
+🚀 Launching Puppeteer...
+🔑 Navigating to login page...
+⌛ Logging in...
+✅ Logged in successfully!
+📊 Selecting 'All Sales Report'...
+🔘 Clicking 'Generate Now'...
+⌛ Waiting for report to load...
+✅ Report loaded! Clicking 'Export To CSV'...
+✅ Export initiated!
+❌ Error in Puppeteer process: ReferenceError: csvFile is not defined
+    at loginAndDownloadCSV (/Users/richardmcgirt/Desktop/Briqdata/run_daily_tasks.js:109:61)
+    at async /Users/richardmcgirt/Desktop/Briqdata/run_daily_tasks.js:159:5
+🛑 Closing browser...
+🚀 Starting automated Git commit & push...
+🔄 Adding changes to Git...
+✍️ Committing changes...
+[main b4ae7ad] Automated upload of latest sales CSV
+ 2 files changed, 29 insertions(+), 12 deletions(-)
+ create mode 100644 cron_log.txt
+🚀 Pushing to GitHub...
+❌ Git error: GitHub token is missing. Set the GITHUB_PAT environment variable.
+📂 Using downloads path: /Users/richardmcgirt/Downloads
+📁 Target repository path: /Users/richardmcgirt/Desktop/Briqdata
+🚀 Launching Puppeteer...
+/Users/richardmcgirt/Desktop/Briqdata/node_modules/puppeteer-core/lib/cjs/puppeteer/node/BrowserLauncher.js:89
+            throw new Error(`Browser was not found at the configured executablePath (${launchArgs.executablePath})`);
+                  ^
+
+Error: Browser was not found at the configured executablePath (/usr/bin/google-chrome)
+    at ChromeLauncher.launch (/Users/richardmcgirt/Desktop/Briqdata/node_modules/puppeteer-core/lib/cjs/puppeteer/node/BrowserLauncher.js:89:19)
+    at async loginAndDownloadCSV (/Users/richardmcgirt/Desktop/Briqdata/run_daily_tasks.js:86:21)
+    at async /Users/richardmcgirt/Desktop/Briqdata/run_daily_tasks.js:247:5
+
+Node.js v18.18.0
+📂 Using downloads path: /Users/richardmcgirt/Downloads
+📁 Target repository path: /Users/richardmcgirt/Desktop/Briqdata
+❌ Error: VANIR_USERNAME or VANIR_PASSWORD is missing. Check GitHub Secrets.
+📂 Using downloads path: /Users/richardmcgirt/Downloads
+📁 Target repository path: /Users/richardmcgirt/Desktop/Briqdata
+❌ Error: VANIR_USERNAME or VANIR_PASSWORD is missing. Check GitHub Secrets.
+📂 Using downloads path: /Users/richardmcgirt/Downloads
+📁 Target repository path: /Users/richardmcgirt/Desktop/Briqdata
+❌ Error: VANIR_USERNAME or VANIR_PASSWORD is missing. Check GitHub Secrets.

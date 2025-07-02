@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Column Display with Count and Percentage (Average)</title>
+    <link rel="stylesheet" href="So.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+   
+</head>
+<body>
+
+    <nav style="text-align: center; margin: 20px 0;">
+        <ul style="list-style-type: none; padding: 0; display: inline-flex; gap: 40px;">
+            <li>
+                <a href="index.html"  style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 18px; padding: 10px 20px; border: 2px solid #0056b3; border-radius: 5px; transition: all 0.3s;">
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="/Po.html"  style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 18px; padding: 10px 20px; border: 2px solid #0056b3; border-radius: 5px; transition: all 0.3s;">
+                    PO Percentage by Counter Person
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <h1>Percentage of Average SOs by User</h1>
+    <div class="download-info" id="csvDate"></div>
+    <div>
+        <strong>Required File Name:</strong>
+        <span style="color: #0044cc; font-weight: bold; margin-left: 10px;">SalesOrdersCreatedbyDateRangebyCounterPerson.csv</span>
+    </div>
+
+    <nav>
+        <ul>
+          <li><a href="https://vanirlive.omnna-lbm.live/index.php?action=Login&module=Users" target="_blank">Download Sales Report</a></li>
+        </ul>
+      </nav>
+    
+ <div id="dropZone">
+  <p>Drag and drop your CSV file here or</p>
+  <label for="csvFileInput" style="color: #0044cc; cursor: pointer; text-decoration: underline;">click</label>
+  to upload.
+  <input type="file" id="csvFileInput" style="display: none;" accept=".csv" />
+</div>
+
+    <table id="csvTable">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Occurrences</th>
+                <th>Percentage</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+       <script src="fileinputpasswordlock.js"></script>
+
+<script type="module" src="So.js"></script>
+
+       <script>
+        window.env = {
+            AIRTABLE_API_KEY: 'patXTUS9m8os14OO1.6a81b7bc4dd88871072fe71f28b568070cc79035bc988de3d4228d52239c8238',
+            AIRTABLE_BASE_ID: 'appO21PVRA4Qa087I',
+            AIRTABLE_TABLE_NAME: 'tbl6EeKPsNuEvt5yJ',
+            AIRTABLE_TABLE_NAME2: 'tbl9SgC5wUi2TQuF7',
+        };
+        </script>
+    </body>
+    </html>

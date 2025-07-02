@@ -1,0 +1,7 @@
+.password-unlock-input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.drop-zone {
+  position: relative;
+}

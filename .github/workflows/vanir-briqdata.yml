@@ -1,0 +1,81 @@
+name: Download and Push Sales Report
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Runs daily at 12:00 UTC
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    env:
+      VANIR_USERNAME: ${{ secrets.VANIR_USERNAME }}
+      VANIR_PASSWORD: ${{ secrets.VANIR_PASSWORD }}
+      GH_PAT: ${{ secrets.GH_PAT }}
+      GITHUB_ACTIONS: true
+
+    steps:
+      - name: 🧾 Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🟢 Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: 🧹 Clean old node_modules (if any)
+        run: rm -rf node_modules
+        
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🔍 Show installed puppeteer version
+        run: npm list puppeteer
+
+
+      - name: 🧱 Install Chromium dependencies (for Puppeteer)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libxss1 libappindicator3-1 libatk-bridge2.0-0 \
+            libgtk-3-0 libnss3 libx11-xcb1 libxcomposite1 \
+            libxdamage1 libxrandr2 xdg-utils fonts-liberation \
+            libasound2t64 || sudo apt-get install -y liboss4-salsa-asound2
+
+
+      - name: 🧠 Run Puppeteer script
+        run: node run_daily_tasks.js
+
+      - name: 📎 Upload downloaded CSV
+        uses: actions/upload-artifact@v4
+        with:
+          name: sales-report
+          path: /tmp/downloads/sales_report.csv
+      
+
+
+      - name: ✅ Finished
+        run: echo "🚀 All done!"
+
+      - name: 🧪 Test secrets
+        run: |
+          if [ -z "${{ secrets.VANIR_USERNAME }}" ]; then
+            echo "❌ VANIR_USERNAME is not set"
+          else
+            echo "✅ VANIR_USERNAME is set"
+          fi
+
+          if [ -z "${{ secrets.VANIR_PASSWORD }}" ]; then
+            echo "❌ VANIR_PASSWORD is not set"
+          else
+            echo "✅ VANIR_PASSWORD is set"
+          fi
+
+          if [ -z "${{ secrets.GH_PAT }}" ]; then
+            echo "❌ GH_PAT is not set"
+          else
+            echo "✅ GH_PAT is set"
+          fi
+

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanir Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+    <script>
+       // Redirect if not logged in
+  const loggedIn = localStorage.getItem("loggedIn");
+  console.log("🧠 localStorage.loggedIn:", loggedIn);
+
+  if (loggedIn !== "true") {
+      console.log("🚫 Not logged in — redirecting to login.html");
+      window.location.href = "login.html";
+  } else {
+      console.log("✅ Logged in — access granted to dashboard");
+  }
+      </script>
+      
+
+</head>
+
+
+
+<body>
+    <nav style="text-align: center; margin: 20px 0 0;">
+        <ul style="list-style-type: none; padding: 0; display: inline-flex; gap: 40px;">
+            <li>
+                <a href="/So.html"  style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 18px; padding: 10px 20px; border: 2px solid #0056b3; border-radius: 5px; transition: all 0.3s;">
+                    SO Percentage by Counter Person
+                </a>
+            </li>
+            <li>
+                <a href="/Po.html"  style="text-decoration: none; color: #0056b3; font-weight: bold; font-size: 18px; padding: 10px 20px; border: 2px solid #0056b3; border-radius: 5px; transition: all 0.3s;">
+                    PO Percentage by Counter Person
+                </a>
+            </li>
+            <li>
+                <div class="locked-container">
+                    <a href="#" class="locked-link" onclick="togglePrompt(event)">Sales</a>
+                 
+    <div class="password-prompt">
+        <input type="password" id="password-input" oninput="validatePassword()" placeholder="Enter password">
+        <button id="submit-btn" onclick="checkPassword()" disabled>Submit</button>
+
+        <div class="previous-passwords" id="previous-passwords"></div>
+    </div>
+
+                </div>
+                
+            </li>
+        </ul>
+    </nav>
+    
+    
+    
+
+   <div class="container">
+        <button id="export-button">Export to CSV</button>
+        <button id="export-button2">Export to CSV Fill in</button>
+
+    
+        <div class="grid-container">
+          
+    
+            <div class="chart-section">
+                <h2>Value of Returns by Branch per Month</h2>
+                
+                <label for="locationDropdown">Select a Location:</label>
+                <select id="locationDropdown">
+                    <option value="">--Choose a location--</option>
+                </select>
+                <div id="record-count2">Records fetched: 0</div>
+                <div id="chartContainer"></div>
+            
+            </div>
+    
+            <div class="chart-section">
+                <h2>Number of Bids Submitted by Branch Current Year</h2>
+                <div id="record-count3">Records fetched: 0</div>
+                <canvas id="bidsChart"></canvas>
+
+            </div>
+
+            <div class="chart-section">
+                <h2>Value of Fill Ins by Branch per Month</h2>
+                
+                
+                <label for="branch-dropdown">Select Branch:</label>
+                <select id="branch-dropdown">
+                    <option value="" disabled selected>Select a branch</option>
+                </select>
+            
+                <div id="total-cost-display">Total Cost for selected branch: $0</div>
+                <div id="live-update-container">Records fetched: 0</div>
+
+            
+                <canvas id="fillInChart"></canvas>
+            </div>
+    <div id="new-chart-container">
+                        <h2>Projected Revenue</h2>
+<canvas id="expectedRevenueChart"></canvas>
+  <p id="record-countNew"></p>
+  <button id="export-button-new">Export</button>
+</div>
+
+         <!--   <div class="chart-section">
+                <h2>Projected Commercial Revenue Next 6 Months by Branch</h2>
+                <div id="record-countC6">Records fetched: 0</div>
+                <canvas id="6monthsChart"></canvas>
+
+            </div>
+    
+            <div class="chart-section">
+                <h2>Projected Commercial Revenue Next 12 Months by Branch</h2>
+                <div id="record-countC12">Records fetched: 0</div>
+                <canvas id="12monthsChart"></canvas>
+
+            </div>
+
+      
+            <div class="chart-section">
+                <h2>Projected Commercial Revenue Next 18 Months by Branch</h2>
+                <div id="record-countC18">Records fetched: 0</div>
+                <canvas id="18monthsChart"></canvas>
+
+            </div>
+    
+            <div class="chart-section">
+                <h2>Projected Residential Revenue Next 6 Months by Branch</h2>
+                <div id="record-countR6">Records fetched: 0</div>
+                <canvas id="6monthsRChart"></canvas>
+
+            </div>
+
+    
+            <div class="chart-section">
+                <h2>Projected Residential Revenue Next 12 Months by Branch</h2>
+                <div id="record-countR12">Records fetched: 0</div>
+                <canvas id="12monthsRChart"></canvas>
+
+            </div>
+    
+            <div class="chart-section">
+                <h2>Projected Residential Revenue Next 18 Months by Branch</h2>
+                <div id="record-countR18">Records fetched: 0</div>
+                <canvas id="18monthsRChart"></canvas> 
+
+            </div> 
+            <div class="chart-section">
+                <h2> Commercial Estimator Revenue Estimated - 30 Days</h2>
+                <div id="record-countE60">Records fetched: 0</div>
+                <canvas id="60daysEChart"></canvas>
+    
+            </div>
+        </div> 
+
+
+    
+    
+
+          <div id="winratebyBranch">
+           <h3 class="grid-header">Commercial Win Rates Current Year</h3>
+            <div id="commercialGrid" class="winrate-grid">
+            </div> 
+        
+            <h3 class="grid-header">Residential Win Rates Current Year</h3>
+            <div id="nonCommercialGrid" class="winrate-grid">
+            </div>  
+
+           <hr>
+        
+            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
+                <h3 class="grid-header">Win Rates last 30 Days</h3>
+            
+                <div id="controls">
+                    <label for="user-filter">Filter by AC:</label>
+                    <select id="user-filter"></select>
+                </div>
+                <div id="fetch-progress" style="display: none;">Loading...</div>
+                <canvas id="winRateChart" width="800" height="150"></canvas>
+            </div>
+            
+            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
+
+      <h3 class="grid-header">Open Opportunities - Residential</h3>
+
+<div id="fetch-progress6" style="display: none;">Loading...</div>  
+
+<label for="user-filter5">Filter by AC:</label>
+<select id="user-filter5"></select>
+<canvas id="winRateChart6" width="800" height="150"></canvas>
+
+<hr>
+
+<h3 class="grid-header">Open Opportunities - Commercial</h3>
+
+<label for="user-filter6">Filter by AC:</label>
+<select id="user-filter6"></select>
+<canvas id="winRateChart7" width="800" height="150"></canvas>
+
+        </div>
+
+        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
+
+
+        <h3 class="grid-header"> In-Person Meetings (Last 90 Days) </h3>
+
+        <div id="fetch-progress3">Loading data, please wait...</div>
+        
+        <label for="user-filter9">Filter by Submitter:</label>
+        <select id="user-filter9"></select>
+        
+        <div id="activity-chart-container">
+            <canvas id="activity-chart" width="800" height="150"></canvas>
+            </div>
+            <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
+
+
+             <h3 class="grid-header"> Returns in last 7 days</h3>
+
+        <div id="fmreturns">
+            <label for="user-filter2">Filter by FM:</label>
+            <select id="user-filter2"></select>
+        </div>
+        <div id="fetch-progress2" style="display: none;">Loading...</div>
+        <canvas id="FMR" width="800" height="150"></canvas>
+
+        </div>
+        <br>
+        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
+
+        <h3 class="grid-header"> Field Manager Commercial Daily Logs Last 7 days</h3>
+
+        <div id="fmdailylogs">
+            <label for="user-filter2">Filter by FM:</label>
+            <select id="user-filter3"></select>
+        </div>
+        <div id="fetch-progress3" style="display: none;">Loading...</div>
+        <canvas id="FDL" width="800" height="150"></canvas>
+
+        <h3 class="grid-header"> # of Elevations and/or Options Last 30 Days </h3>
+
+        <canvas id="revisionsChart" width="800" height="150"></canvas>
+
+        </div>
+    </div>
+        </div> 
+      <div class="container">
+
+        <h3 class="grid-header"> Sales Report By Location</h3>
+
+            <div id="dateContainer"></div>
+
+            <input type="file" id="fileInput" accept=".csv">
+
+            <div class="table-container">
+                <table id="csvTable"></table>
+            </div> -->
+        </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+<!--  <script src="Fillin.js"></script> 
+ <script src="Return.js"></script> 
+ <script src="bids.js"></script> 
+ <script src ="winbyac.js"></script>
+
+ <script src="18monthCommercial.js"></script> 
+
+   <script src="12monthsCommercial.js"></script> 
+     <script src="6monthsCommercial.js"></script> 
+ <script src="6monthsRes.js"></script> 
+
+   <script src="18monthCommercial.js"></script> 
+   <script src="12monthRes.js"></script> 
+  <script src="18monthREs.js"></script>  
+  <script src="winratebybranch.js"></script> 
+ <script src ="index.js"></script> 
+ <script src ="Returnsbyfm.js"></script> 
+
+   <script src ="InPersonMeetings.js"></script>  
+  <script src ="salespassword.js"></script>  
+  <script src ="estimatorproduction.js"></script>  
+  <script src ="dailylogsbyfm.js"></script> 
+  <script src="winratebybranch.js"></script> 
+  <script src ="OpenOpportunities.js"></script> 
+  <script src="commercialestimatorrevene.js"></script> -->
+   <script src="61218revenue.js"></script> 
+
+
+<script>
+
+
+
+</script>
+
+</body>
+
+</html>

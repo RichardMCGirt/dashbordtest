@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01 Transitional//EN"><html><head>
+
+<link rel="shortcut icon" href="include/images/omnna-favicon.png">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green Team Holdings, LLC. - ENV: vanirlive - IP: 10.0.12.79 - DIR: production - DB: lbm-prod-gcl-cluster.cluster-cinahw2qcduv.us-west-2.rds.amazonaws.com </title>
+    
+<script defer="" src="themes/softed/fontawesome/js/all.min.js" data-auto-replace-svg="false"></script>
+<link rel="stylesheet" type="text/css" media="all" href="themes/softed/fontawesome/css/all.min.css">
+
+
+<link rel="stylesheet" type="text/css" href="style.php?p=style.scss">
+<link rel="stylesheet" type="text/css" media="all" href="themes/softed/bootstrap/v4/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" media="all" href="themes/softed/bootstrap/css/bootstrap-theme.css"> -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700,700i,900,900i|Ubuntu:300,300i,400,500,500i,700,700i" rel="stylesheet">
+<link rel="stylesheet" type="text/css" media="all" href="include/js/jquerytoast/css/jquery.toast.css">
+<link rel="stylesheet" type="text/css" media="all" href="include/bootstrap-toggle/css/bootstrap-toggle.css">
+<link rel="stylesheet" type="text/css" media="all" href="include/js/datetimepicker/css/bootstrap-datetimepicker.css">
+
+<link rel="stylesheet" href="themes/softed/treestyle.css?v2" type="text/css">
+<link rel="stylesheet" type="text/css" media="all" href="themes/softed/common_responsive.css">
+
+
+
+
+<script language="JavaScript" type="text/javascript" src="include/js/en_us.lang.js"></script>
+
+
+
+<script language="javascript" type="text/javascript" src="include/scriptaculous-js-1.9.0/lib/prototype.js"></script>
+<script language="javascript" type="text/javascript" src="include/scriptaculous-js-1.9.0/src/scriptaculous.js?load=builder,effects,dragdrop,controls,slider"></script><script type="text/javascript" src="https://vanirlive.omnna-lbm.live/include/scriptaculous-js-1.9.0/src/builder.js"></script><script type="text/javascript" src="https://vanirlive.omnna-lbm.live/include/scriptaculous-js-1.9.0/src/effects.js"></script><script type="text/javascript" src="https://vanirlive.omnna-lbm.live/include/scriptaculous-js-1.9.0/src/dragdrop.js"></script><script type="text/javascript" src="https://vanirlive.omnna-lbm.live/include/scriptaculous-js-1.9.0/src/controls.js"></script><script type="text/javascript" src="https://vanirlive.omnna-lbm.live/include/scriptaculous-js-1.9.0/src/slider.js"></script>
+<script language="javascript" type="text/javascript" src="include/scriptaculous-js-1.9.0/src/dom-drag.js"></script>
+
+
+<script type="text/javascript">
+
+</script>
+
+<script language="javaScript" type="text/javascript" src="include/js/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="themes/softed/popper.min.js"></script>
+<script language="javaScript" type="text/javascript" src="themes/softed/bootstrap/v4/js/bootstrap.min.js"></script>
+<script language="javaScript" type="text/javascript" src="include/js/jquerytoast/js/jquery.toast.js"></script>
+<script language="JavaScript" type="text/javascript" src="include/js/bootbox.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="include/js/jquery.priceformat.min.js"></script>
+<script language="JavaScript" type="text/javascript" src="include/bootstrap-toggle/js/bootstrap-toggle.js"></script>
+<script language="JavaScript" type="text/javascript" src="include/js/datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script language="JavaScript" type="text/javascript" src="include/js/datetimepicker/js/locales/bootstrap-datetimepicker.uk.js"></script>
+<script language="JavaScript" type="text/javascript" src="include/js/jquery.serialize-object.min.js"></script>
+
+<script type="text/javascript">   
+    var global_view_decimal_qty_digit = "4";
+    var global_decimal_amount_digit = '4';
+    var global_decimal_total_amount_digit = '2';
+    var global_qty_base_integer_sub = '1';
+    var global_lot_number = 'OFF';
+    var global_okb_2020_plan = 'no';
+
+</script>    
+
+
+<script type="text/javascript">
+   var jq = jQuery.noConflict();
+
+    if (Prototype.BrowserFeatures.ElementExtensions) {
+        var disablePrototypeJS = function (method, pluginsToDisable) {
+                var handler = function (event) {
+                    event.target[method] = undefined;
+                    setTimeout(function () {
+                        delete event.target[method];
+                    }, 0);
+                };
+                pluginsToDisable.each(function (plugin) {
+                    jQuery(window).on(method + '.bs.' + plugin, handler);
+                });
+            },
+            pluginsToDisable = ['collapse', 'dropdown', 'modal', 'tooltip', 'popover','tab'];
+        disablePrototypeJS('show', pluginsToDisable);
+        disablePrototypeJS('hide', pluginsToDisable);
+    }
+
+    /*
+    //Over ride proto type json functionailty
+    //https://stackoverflow.com/questions/710586/json-stringify-array-bizarreness-with-prototype-js
+    var _json_stringify = JSON.stringify;
+    JSON.stringify = function(value) {
+        var _array_tojson = Array.prototype.toJSON;
+        delete Array.prototype.toJSON;
+        var r=_json_stringify(value);
+        Array.prototype.toJSON = _array_tojson;
+        return r;
+    };*/
+</script>
+
+
+<script type="text/javascript">
+    var global_fuse5_date_format = ('mm-dd-yyyy');
+    var global_fuse5_date_format_js = ('%m-%d-%Y');    
+</script>
+
+<script language="JavaScript" type="text/javascript">
+    jq(document).ready(function () {
+        jq('#dismiss, .overlay').on('click', function () {
+            jq('#sidebar').removeClass('active');
+            jq('.overlay').removeClass('active');
+        });
+
+        jq('#sidebarCollapse').on('click', function () {
+            jq('#sidebar').addClass('active');
+            jq('.overlay').addClass('active');
+            jq('.collapse.in').toggleClass('in');
+            jq('a[aria-expanded=true]').attr('aria-expanded', 'false');
+
+            if(jq("#installsales_sidebar").length)
+            {
+                if(jq("#installsales_sidebar").hasClass("active"))
+                {
+                    jq("#installsales_sidebar").removeClass("active");   
+                    jq("#installsales_sidebar").hide();   
+                }
+            }
+        });
+    });
+</script>
+<script language="JavaScript" type="text/javascript" src="include/js/general.js?20250403"></script>
+<script language="JavaScript" type="text/javascript" src="include/js/general.jq.js?20250403"></script>
+<script language="JavaScript" type="text/javascript" src="include/js/displayfields.js?20250403"></script>
+
+
+
+<link rel="stylesheet" type="text/css" href="style.php?p=style.scss&amp;1743694806">
+<link rel="stylesheet" type="text/css" media="all" href="themes/softed/login_responsive.css">
+
+<style type="text/css">
+     .container-fluid {
+            width: 100%;
+            padding-right:0 !important;
+            padding-left: 0 !important;
+            margin-right: auto;
+            margin-left: auto;
+            overflow-y: scroll;
+        }
+        .card {
+            border: none;
+            box-shadow: none;
+        }
+        .login_fl{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login_content .login form {
+            max-width: 70%;
+            margin: 0 auto;
+        }
+        .login_content .login input{
+            height: auto !important;
+            margin-top: 0;
+        }
+        .login_content .input-group {
+            -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap; 
+        }
+        .login_content label {
+            margin-bottom: 0;
+        }
+        .login_content .login  input{
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+        .login .btn.btn-md.btn-success.text-uppercase {
+            width: 100% !important;
+            margin: 0 !important;
+        }
+        .input-group > .custom-select:not(:first-child), .input-group > .form-control:not(:first-child) {
+            border-top-left-radius: 0 !important;
+            border-bottom-left-radius: 0  !important;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            outline:none;
+        }
+
+</style>
+</head>  
+<body style="padding:0; margin:0;">
+<div class="container-fluid login_content">
+    <section class="form-card-page form-card row no-gutters">
+        <div class="form-card__img form-card_img_left col-lg-6"></div>
+        <div class="col-lg-6 col-sm-12 login_fl">          
+            <div class="card card-signin">
+                <div class="card-body">
+                    <div class="mb-5">
+                        <div class="text-center">
+                            
+                            <img src="https://vanirlive.omnna-lbm.live/themes/softed/images/OMNNA-Logo.png" alt="Omnna LBM" title="Omnna LBM" border="0">
+                        </div>
+                        
+                    </div>
+ 
+<script language="javascript" type="text/javascript">
+
+    //localStorage.removeItem("so_document_print_obj");
+
+    var GLOBAL_DEFAULT_LOGIN_ELEMENT_FOCUS = '{$GLOBAL_DEFAULT_LOGIN_ELEMENT_FOCUS}';
+    var ALLOWBARCODELOGIN = '{$ALLOWBARCODELOGIN}';
+    function trim(str)
+    {
+        var s = str.replace(/\s+$/, '');
+        s = s.replace(/^\s+/, '');
+        return s;
+    }
+
+    function validateLoginForm()
+    {        
+        var user_name = document.getElementById('user_name').value;
+        var user_password = document.getElementById('user_password').value;
+        var user_barcode = '';
+        if (document.getElementById('user_barcode'))
+        {
+            user_barcode = document.getElementById('user_barcode').value;//RM#7222
+        }
+        if (trim(user_barcode) == '')
+        {
+            if (trim(user_name) == '')
+            {
+                document.getElementById('user_name').focus();
+                return false;
+            }
+            if (trim(user_password) == '')
+            {
+                document.getElementById('user_password').focus();
+                return false;
+            }
+        }
+        localStorage.setItem('is_user_loggedout', 'no');
+        
+        return true;
+    }
+
+    window.onload = function ()
+    {
+        if (GLOBAL_DEFAULT_LOGIN_ELEMENT_FOCUS == 'barcode' && ALLOWBARCODELOGIN == 'ON')
+        {
+            document.getElementById('user_barcode').focus();
+        }
+        else
+        {
+            document.getElementById('user_name').focus();
+        }
+    }
+</script>
+
+
+<style>
+    
+    
+    .footerText{
+        color:#ffffff;
+        padding:5px 10px;
+
+    }
+    .footerText a{
+        text-decoration: none;
+    }
+    .footerText a{
+        color:#FFFFFF;
+        text-decoration: none;
+    }
+
+</style>
+
+                <div style="display:none;" id="loginpageredirectionfromajaxcallcheck"></div>
+                <div class="login text-center ">       
+                    
+                    
+                    <form action="index.php" method="post" name="DetailView" id="form" onsubmit="return validateLoginForm();" class="form-horizontal" role="form">
+                                                                        <div class="form-group"> 
+                            <div class="col-sm-8 text-danger">You must specify a valid username and password. </div>
+                        </div>
+                                                <div class="form-group">
+                            <div class="col-sm-12 text-danger">LBM is tested and supported on the Mozilla Firefox browser on the Microsoft Windows operating system. Although other browsers can be used, full functionality is only supported in the latest versions of Firefox on Windows.You are seeing this message for 1 of 2 reasons. 
+<br>
+1) You are Running Firefox already, but there is a newer version of Firefox now available.
+<br>
+2) You are running a browser or operating system other than Firefox or Windows.
+<br>
+Please consider upgrading to the latest version of Firefox on Windows </div>
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                           <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <label for="user_name">
+                                        <i class="fas fa-user"></i>
+                                    </label>
+                                </span>
+                            </div>
+                            <!-- <div class="col-sm-12"> -->
+                                <input class="detailedViewTextBox form-control" type="text" name="user_name" id="user_name" value="4625" tabindex="1" placeholder="User Name" autocapitalize="none">
+                            <!-- </div> -->
+                        </div>
+                        <div class="input-group mb-3">
+                            <!-- <label for="address" class ="col-sm-12">Password:</label> -->
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon2"><label for="user_password"><i class="fas fa-lock"></i></label></span>
+                            </div>
+                            <!-- <div class="col-sm-12">        -->   
+                                <input class="detailedViewTextBox form-control" type="password" name="user_password" id="user_password" value="" tabindex="2" placeholder="Password" style="padding:10px;">
+                            <!-- </div> -->
+                        </div>
+                                                <div class="form-label-group">
+                            <input title="Login [Alt+L]" alt="Login [Alt+L]" accesskey="Login [Alt+L]" type="submit" name="Login" value=" Login " tabindex="5" class="btn btn-md btn-success  text-uppercase">
+                            <input type="hidden" name="module" value="Users">
+                            <input type="hidden" name="action" value="Authenticate">
+                            <input type="hidden" name="return_module" value="Users">
+                            <input type="hidden" name="return_action" value="Login">
+                        </div>                                
+                                                <div class="mt-3">
+                            © Copyright 2025. <b>Green Team Holdings, LLC.</b> All Rights Reserved.
+                        </div>
+                    </form>
+                    
+                </div>                            
+            </div>                                                       
+        </div></div></section>                            
+    </div> 
+
+
+
+
+</body></html>
