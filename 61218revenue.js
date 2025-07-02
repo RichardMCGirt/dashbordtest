@@ -134,14 +134,19 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
     // 👉 Filter out past months, only keep current and future months
-    sortedMonths = sortedMonths.filter(monthName => {
-        const [month, year] = monthName.split(' ');
-        const monthDate = new Date(`${month} 1, ${year}`);
-        monthDate.setHours(0, 0, 0, 0);
-        return monthDate >= new Date(today.getFullYear(), today.getMonth(), 1);
-    });
+   // 👉 Filter out past months, only keep current and future months
+sortedMonths = sortedMonths.filter(monthName => {
+    const [month, year] = monthName.split(' ');
+    const monthDate = new Date(`${month} 1, ${year}`);
+    monthDate.setHours(0, 0, 0, 0);
+    return monthDate >= new Date(today.getFullYear(), today.getMonth(), 1);
+});
 
-    console.log("Filtered months (current and future):", sortedMonths);
+// 👉 Limit to next six months
+sortedMonths = sortedMonths.slice(0, 6);
+
+console.log("Filtered months (next six months):", sortedMonths);
+
 
     createRevenueChart(revenueByDivision, sortedMonths);
 }
