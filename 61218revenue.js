@@ -226,18 +226,19 @@ async function processRecords(allRecords) {
 
     const datasets = [];
 
-   const colors = [
-  'rgba(31, 119, 180, 0.8)',   // Strong blue
-  'rgba(255, 127, 14, 0.8)',   // Vivid orange
-  'rgba(44, 160, 44, 0.8)',    // Bright green
-  'rgba(214, 39, 40, 0.8)',    // Red
-  'rgba(148, 103, 189, 0.8)',  // Purple
-  'rgba(140, 86, 75, 0.8)',    // Brown
-  'rgba(227, 119, 194, 0.8)',  // Pink
-  'rgba(127, 127, 127, 0.8)',  // Gray
-  'rgba(188, 189, 34, 0.8)',   // Olive
-  'rgba(23, 190, 207, 0.8)'    // Teal
+const colors = [
+  'rgba(0, 82, 155, 0.8)',   // Deep blue
+  'rgba(230, 85, 13, 0.8)',  // Rich orange
+  'rgba(49, 163, 84, 0.8)',  // Medium green
+  'rgba(165, 15, 21, 0.8)',  // Deep red
+  'rgba(106, 61, 154, 0.8)', // Royal purple
+  'rgba(255, 127, 0, 0.8)',  // Bright orange
+  'rgba(102, 194, 165, 0.8)',// Mint teal
+  'rgba(120, 120, 120, 0.8)',// Neutral gray
+  'rgba(153, 142, 60, 0.8)', // Olive gold
+  'rgba(38, 139, 210, 0.8)'  // Soft sky blue
 ];
+
 
 
     divisions.forEach((division, index) => {
