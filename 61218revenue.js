@@ -133,7 +133,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         return dateA - dateB;
     });
 
-    // 👉 Filter out past months, only keep current and future months
    // 👉 Filter out past months, only keep current and future months
 sortedMonths = sortedMonths.filter(monthName => {
     const [month, year] = monthName.split(' ');
@@ -200,14 +199,14 @@ console.log("Filtered months (next six months):", sortedMonths);
                     x: {
                         title: {
                             display: true,
-                            text: 'Month'
+                            text: ''
                         }
                     },
                     y: {
                         beginAtZero: true,
                         title: {
                             display: true,
-                            text: 'Expected Revenue'
+                            text: ''
                         },
                         ticks: {
                             callback: function (value) {
